@@ -1,0 +1,19 @@
+{
+    "pointValues": [
+        "120_144_Dark_Angels_ArmyRules-23.xhtml",
+        "120_144_Dark_Angels_ArmyRules-24.xhtml",
+        "120_144_Dark_Angels_ArmyRules-25.xhtml"
+    ],
+    
+    "wargearLists": "074_097_Dark_Angels_ArmyList1-2.xhtml",
+
+    "datasheets": [
+        ""
+    ],
+
+    "aliases": {
+        "Lightning claws (single/pair)": "Lightning claw",
+        "Grav-cannon and grav amp": "Grav-cannon and grav-amp",
+        "CHARACTERS": "CHARACTER"
+    }
+}
