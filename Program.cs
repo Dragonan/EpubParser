@@ -11,12 +11,20 @@ namespace EpubParser
             try
             {
                 Setup(args);
-                DataCache.Load();
 
                 //PointParser.ParsePages(FilePaths.PointPages);
-                WargearListParser.ParsePage(FilePaths.WargearListPage);
+                //WargearListParser.ParsePage(FilePaths.WargearListPage);
 
-                DataCache.Save();
+                //DataCache.Save();
+
+                foreach (var list in DataCache.WargearLists)
+                {
+                    Console.WriteLine(list.Name);
+                    foreach (var item in list.Items)
+                    {
+                        Console.WriteLine(item.Entity.Name);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -33,6 +41,7 @@ namespace EpubParser
                 Constants.Init();
                 FilePaths.Init(args[0]);
                 DataCache.Init();
+                DataCache.Load();
         }
     }
 }

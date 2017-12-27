@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using EpubParser.DataModels;
+using EpubParser.DataModels.Base;
+using EpubParser.DataModels.Interfaces;
 using Newtonsoft.Json;
 
 namespace EpubParser.Helpers
@@ -17,6 +19,18 @@ namespace EpubParser.Helpers
             Models = new EntityList<Model>();
             Wargear = new EntityList<Wargear>();
             WargearLists = new EntityList<WargearList>();
+        }
+
+        public static T Get<T>(int id) where T: IEntity
+        {
+            if (typeof(T) == typeof(Model))
+                return (T)(object)Models.Get(id);
+            if (typeof(T) == typeof(Wargear))
+                return (T)(object)Wargear.Get(id);
+            if (typeof(T) == typeof(WargearList))
+                return (T)(object)WargearLists.Get(id);
+
+            return default(T);
         }
 
         public static void Load()

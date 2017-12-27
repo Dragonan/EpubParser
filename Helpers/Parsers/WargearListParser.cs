@@ -80,7 +80,8 @@ namespace EpubParser.Helpers.Parsers
                     if (wargear == null)
                         throw new Exception("Wargear List contains items not found in database: " + rowText + "\"");
 
-                    list.Items.Add(new WargearListOption(wargear.ID, limit));
+                    var newItem = list.Items.Get(wargear.ID) ?? list.Items.Create(new WargearListOption(wargear.ID, limit, wargear));
+                    newItem.Limit = limit;
                 }
             }
         }

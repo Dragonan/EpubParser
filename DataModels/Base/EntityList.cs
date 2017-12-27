@@ -5,10 +5,19 @@ using System.Linq;
 using EpubParser.DataModels.Interfaces;
 using Newtonsoft.Json;
 
-namespace EpubParser.DataModels
+namespace EpubParser.DataModels.Base
 {
     public class EntityList<T>: List<T> where T: IEntity
     {
+        public T Get(int id)
+        {
+            if (id <= 0)
+                return default(T);
+
+            return this.FirstOrDefault(x => x.ID == id);
+            
+        }
+        
         public T Get(string name)
         {
             if (String.IsNullOrWhiteSpace(name))

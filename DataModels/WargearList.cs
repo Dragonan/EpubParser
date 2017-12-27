@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using EpubParser.DataModels.Base;
 using EpubParser.DataModels.Interfaces;
+using EpubParser.Helpers;
+using Newtonsoft.Json;
 
 namespace EpubParser.DataModels
 {
@@ -8,27 +11,26 @@ namespace EpubParser.DataModels
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public List<WargearListOption> Items { get; set; }
+        public ReferenceList<WargearListOption, Wargear> Items { get; set; }
 
         public WargearList() : this(null) { }
 
         public WargearList(string name)
         {
             Name = name;
-            Items = new List<WargearListOption>();
+            Items = new ReferenceList<WargearListOption, Wargear>();
         }
     }
 
-    public class WargearListOption
+    public class WargearListOption: ReferenceItem<Wargear>
     {
-        public int ID { get; set; }
         public int Limit { get; set; }
 
         public WargearListOption() { }
 
-        public WargearListOption(int id, int limit)
+        public WargearListOption(int id, int limit, Wargear entity = null)
+            :base(id, entity)
         {
-            ID = id;
             Limit = limit;
         }
     }
