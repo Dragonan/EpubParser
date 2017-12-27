@@ -91,12 +91,23 @@ namespace EpubParser.Helpers.Parsers
                             break;
                         }
 
-                        tags = new [] { clr.ToUpper() };
+                        var tag = clr.ToUpper();
+                        var alias = Settings.BookConfig["aliases:" + tag];
+                        tags = new [] { alias ?? tag };
                     }
 
                     if (tags.Any())
                     {
-                        wargear.SpecialCosts.Add(new SpecialCost(tags, cost, cost2));
+                        var specialCost = wargear.SpecialCosts.FirstOrDefault(x => x.Tags.SequenceEqual(tags));
+                        if (specialCost != null)
+                        {
+                            specialCost.Cost = cost;
+                            specialCost.SecondCost = cost2;
+                        }
+                        else
+                        {
+                            wargear.SpecialCosts.Add(new SpecialCost(tags, cost, cost2));
+                        }
                     }
                     else
                     {
