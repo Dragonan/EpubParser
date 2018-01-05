@@ -6,7 +6,7 @@ namespace EpubParser.Helpers
     {
         public static string ModelNameSeparator { get; private set; }
 
-        public static void Init()
+        static Constants()
         {
             ModelNameSeparator = Settings.AppConfig["nameSeparator"];
         }

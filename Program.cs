@@ -10,10 +10,14 @@ namespace EpubParser
         {
             try
             {
-                Setup(args);
+                if (args.Length == 0 || String.IsNullOrWhiteSpace(args[0]))
+                    throw new Exception("No book selected");
 
-                //PointParser.ParsePages(FilePaths.PointPages);
-                //WargearListParser.ParsePage(FilePaths.WargearListPage);
+                Book.Load(args[0]);
+                DataCache.Load();
+
+                //PointParser.ParsePages(Book.PointPages);
+                //WargearListParser.ParsePage(Book.WargearListPage);
 
                 //DataCache.Save();
 
@@ -30,18 +34,6 @@ namespace EpubParser
             {
                 Console.WriteLine(ex.Message);
             }
-        }
-
-        static void Setup(string[] args)
-        {
-                if (args.Length == 0 || String.IsNullOrWhiteSpace(args[0]))
-                    throw new Exception("No book selected");
-
-                Settings.Init();
-                Constants.Init();
-                FilePaths.Init(args[0]);
-                DataCache.Init();
-                DataCache.Load();
-        }
+        }    
     }
 }

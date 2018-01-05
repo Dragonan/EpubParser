@@ -9,7 +9,7 @@ namespace EpubParser.Helpers
         public static IConfigurationRoot AppConfig { get; private set; }
         public static IConfigurationRoot BookConfig { get; private set; }
 
-        public static void Init()
+        static Settings()
         {
             AppConfig = OpenConfig("appsettings.json", Directory.GetCurrentDirectory());
         }

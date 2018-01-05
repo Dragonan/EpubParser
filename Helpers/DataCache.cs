@@ -14,7 +14,7 @@ namespace EpubParser.Helpers
         public static EntityList<Wargear> Wargear { get; set; }
         public static EntityList<WargearList> WargearLists { get; set; }
 
-        public static void Init()
+        static DataCache()
         {
             Models = new EntityList<Model>();
             Wargear = new EntityList<Wargear>();
@@ -35,16 +35,16 @@ namespace EpubParser.Helpers
 
         public static void Load()
         {
-            Models.Load(FilePaths.ModelsJson);
-            Wargear.Load(FilePaths.WargearJson);
-            WargearLists.Load(FilePaths.WargearListsJson);
+            Models.Load(Book.ModelsJson);
+            Wargear.Load(Book.WargearJson);
+            WargearLists.Load(Book.WargearListsJson);
         }
 
         public static void Save()
         {
-            Models.Save(FilePaths.ModelsJson);
-            Wargear.Save(FilePaths.WargearJson);
-            WargearLists.Save(FilePaths.WargearListsJson);
+            Models.Save(Book.ModelsJson);
+            Wargear.Save(Book.WargearJson);
+            WargearLists.Save(Book.WargearListsJson);
             
         }
     }

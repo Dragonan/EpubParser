@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace EpubParser.Helpers
 {
-    public static class FilePaths
+    public static class Book
     {
         public static string[] PointPages { get; private set; }
         public static string WargearListPage { get; private set; }
@@ -14,7 +14,7 @@ namespace EpubParser.Helpers
         public static string WargearJson { get; private set; }
         public static string WargearListsJson { get; private set; }
 
-        public static void Init(string book)
+        public static void Load(string book)
         {
             var appDir = Directory.GetCurrentDirectory() + @"\";
             var epubsDir = appDir + Settings.AppConfig["filePaths:epubPath"];
